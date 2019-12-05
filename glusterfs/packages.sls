@@ -8,7 +8,7 @@ glusterfs-ppa:
   pkgrepo.managed:
     - humanname: GlusterFS PPA
     - name: ppa:gluster/glusterfs-{{ pillar["glusterfs"]["version"] }}
-    - key_url: https://download.gluster.org/pub/gluster/glusterfs/LATEST/rsa.pub
+    - key_url: https://download.gluster.org/pub/gluster/glusterfs/{{ pillar["glusterfs"]["version"] }}/rsa.pub
     - prereq:
       - glusterfs-server-pkg
 
