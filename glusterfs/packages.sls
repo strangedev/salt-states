@@ -5,7 +5,7 @@ software-properties-common:
       - glusterfs-server-pkg
 
 glusterfs-ppa:
-  pkrepo.managed:
+  pkgrepo.managed:
     - humanname: GlusterFS PPA
     - name: ppa:gluster/glusterfs-{{ pillar["glusterfs"]["version"] }}
     - prereq:
