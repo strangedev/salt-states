@@ -4,6 +4,7 @@ base:  # 'base' environment
     - ssh
     - editor
     - users
+    - ufw
 
   '*swarm*':
     - docker
