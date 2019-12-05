@@ -18,6 +18,23 @@ include:
     - watch:
       - service: ufw
 
+'ufw allow ssh && ufw limit ssh':
+  cmd.run:
+    - watch:
+      - service: ufw
+
+{% if pillar["ufw"]["private_subnet"] %}
+'ufw allow salt from {{ pillar["ufw"]["private_subnet"] }}':
+  cmd.run:
+    - watch:
+      - service: ufw
+{% else %}
+'ufw allow salt':
+  cmd.run:
+    - watch:
+      - service: ufw
+{% endif %}
+
 {% if pillar["ufw"]["private_subnet"] %}
 'ufw allow from {{ pillar["ufw"]["private_subnet"] }}':
   cmd.run:
