@@ -6,7 +6,7 @@ Adds service definitions to UFW and enables some default firewall rules.
 
 ## Compatibility
 
-- Debian 9
+- Ubuntu 18.04
 
 ## Pillars
 
