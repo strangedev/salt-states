@@ -3,5 +3,4 @@ ufw:
     - enable: True
     - reload: True
     - watch:
-      - pkg: ufw
       - file: /etc/ufw/*
