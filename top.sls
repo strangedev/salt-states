@@ -5,6 +5,7 @@ base:  # 'base' environment
     - editor
     - users
     - ufw
+    - glusterfs
 
   '*swarm*':
     - docker
