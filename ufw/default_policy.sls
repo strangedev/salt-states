@@ -17,7 +17,7 @@ ufw-allow-ssh:
 {% endfor %}
 {% endif %}
 
-'yes | ufw enable':
+'ufw enable':
   cmd.run:
     - require:
       - ufw-allow-ssh
