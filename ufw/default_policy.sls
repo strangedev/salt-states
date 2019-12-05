@@ -23,21 +23,16 @@ include:
     - watch:
       - service: ufw
 
-{% if pillar["ufw"]["private_subnet"] %}
-'ufw allow salt from {{ pillar["ufw"]["private_subnet"] }}':
+'ufw allow salt-master':
   cmd.run:
     - watch:
       - service: ufw
-{% else %}
-'ufw allow salt':
-  cmd.run:
-    - watch:
-      - service: ufw
-{% endif %}
 
-{% if pillar["ufw"]["private_subnet"] %}
-'ufw allow from {{ pillar["ufw"]["private_subnet"] }}':
+{% if pillar["ufw"]["private_subnets"] %}
+{% for subnet in pillar["ufw"]["private_subnets"] %}
+'ufw allow from {{ subnet }}':
   cmd.run:
     - watch:
       - service: ufw
+{% endfor %}
 {% endif %}
