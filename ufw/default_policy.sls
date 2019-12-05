@@ -11,15 +11,11 @@ include:
     - source: salt://ufw/iptables/before.rules
 
 'ufw default deny':
-  cmd.run:
-    - watch:
-      - service: ufw
+  cmd.run
 
 ufw-allow-ssh:
   cmd.run:
     - name: 'ufw allow ssh && ufw limit ssh'
-    - watch:
-      - service: ufw
 
 {% if pillar["ufw"]["private_subnets"] %}
 {% for subnet in pillar["ufw"]["private_subnets"] %}
