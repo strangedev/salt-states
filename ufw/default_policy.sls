@@ -1,9 +1,6 @@
 include:
   - ufw.service
 
-'ufw enable':
-  cmd.run
-
 # these are iptables rules which mitigate some common attacks
 /etc/ufw/before.rules:
   file.managed:
@@ -18,13 +15,9 @@ include:
     - watch:
       - service: ufw
 
-'ufw allow ssh && ufw limit ssh':
+ufw-allow-ssh:
   cmd.run:
-    - watch:
-      - service: ufw
-
-'ufw allow salt-master':
-  cmd.run:
+    - name: 'ufw allow ssh && ufw limit ssh'
     - watch:
       - service: ufw
 
@@ -36,3 +29,8 @@ include:
       - service: ufw
 {% endfor %}
 {% endif %}
+
+'ufw enable':
+  cmd.run:
+    - require:
+      - ufw-allow-ssh
